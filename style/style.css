@@ -7,6 +7,17 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.cabecalho{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2%;
+    background-color: #005e3a;
+    border-radius: 50px;
+}
+
 .center{
     display: flex;
     justify-content: space-between;
@@ -55,8 +66,12 @@ header{
     height: 90px;
 }
 
+body {
+    background: linear-gradient(to right, #005e3a, #FFCA2F);
+}
+
 .menu a{
-    color: black;
+    color: #FFCA2F;
     text-decoration: none;
     font-weight: bold;
     margin-right: 30px;
@@ -100,6 +115,7 @@ section.sobre{
 
 .texto-sobre h1{
     font-size: 60px;
+    color: #FFCA2F;
 }
 
 hr{
@@ -110,7 +126,7 @@ hr{
 
 .texto-sobre p{
     margin: 20px 0;
-    color: black;
+    color: #FFCA2F;
     font-size: 20px;
     font-weight: bold;
 }
@@ -118,7 +134,7 @@ hr{
 .texto-sobre button{
     border: 0;
     background-color: #005e3a;
-    color: white;
+    color: #FFCA2F;
     border-radius: 30px;
     width: 150px;
     height: 50px;
