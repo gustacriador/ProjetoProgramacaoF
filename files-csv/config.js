@@ -18,7 +18,13 @@ const lerCSV = (caminhoArquivo) => {
 
 // Função para processar as linhas do CSV
 const processarLinhas = (linha) => {
-    console.log('Linha processada:', linha);
+    //console.log('Linha processada:', linha);
+    return linha;
 };
 
-lerCSV('ProjetoProgramacaoF\\files-csv\\athlete_events.csv');
+module.exports = {
+    lerCSV,
+    processarLinhas
+};
+
+//lerCSV('files-csv\\athlete_events.csv');

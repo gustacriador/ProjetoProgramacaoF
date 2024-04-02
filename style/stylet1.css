@@ -7,13 +7,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
 body {
     background: linear-gradient(to right, #005e3a, #FFCA2F);
 }
@@ -85,32 +78,87 @@ header{
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 0px;
+    margin-bottom: 100px;
 }
 
 .card{
-  background-color: #ffffff50;
-  padding: 30px;
-  border-radius: 8%;
-  box-shadow: 3px 3px 1px 0px #00000060;
+    position: relative;
+    width: 50%;
+    height: 60vh;
+    background-color: #005e3a;
+    padding: 30px;
+    border-radius: 60px;
+    box-shadow: 3px 3px 1px 0px #00000060;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pergunta{
-    width: 300px;
-    margin: 0 auto;
-    padding: 50px;
-    border-radius: 15px;
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pergunta label {
-    display: block;
-    margin-bottom: 10px;
+    white-space: nowrap; 
+    font-size: 50px;
+    justify-content: center;
+    padding: 20px;
     font-weight: bold;
+    color: #FFCA2F;
 }
 
 .pergunta select {
+    width: 92%;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    margin: 0%;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    color:#01492e;
+    background-color: #FFCA2F;
+}
+
+button{
+    width: 95%;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    margin: 0%;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    color:#01492e;
+    background-color: #FFCA2F;
+}
+
+button:hover{
+    background-color: #01492e;
+    color: #FFCA2F;
+    transition: all .4s ease-out;
+}
+
+.butao {
+    display: flex;
+    justify-content: center;
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+}
+
+.pergunta select:hover{
+    background-color: #01492e;
+    color: #FFCA2F;
+    transition: all .4s ease-out;
+}
+
+.pergunta select:focus {
+    outline: none; /* Remove a borda de foco padrão */
+    border: 1px solid #FFCA2F; /* Adiciona uma nova borda de foco */
 }
