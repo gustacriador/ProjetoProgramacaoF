@@ -187,32 +187,95 @@ async function clicarBotaoIdade(nomeAtleta, resultDivId) {
 
 // Resposta de cada botão
 document.addEventListener("DOMContentLoaded", () => {
-    const btnNeymar = document.getElementById('botao_idadeNeymar');
-    const btnRafaela = document.getElementById('botao_idadeRafaela');
-    const btnBruninho = document.getElementById('botao_idadeBruninho');
-    const btnAdriana = document.getElementById('botao_idadeAdriana');
+    const btn_idadeNeymar = document.getElementById('botao_idadeNeymar');
+    const btn_idadeRafaela = document.getElementById('botao_idadeRafaela');
+    const btn_idadeBruninho = document.getElementById('botao_idadeBruninho');
+    const btn_idadeAdriana = document.getElementById('botao_idadeAdriana');
 
-    if (btnNeymar) {
-        btnNeymar.addEventListener('click', async () => {
+    if (btn_idadeNeymar) {
+        btn_idadeNeymar.addEventListener('click', async () => {
             await clicarBotaoIdade('Neymar da Silva Santos Jnior', 'idade-neymar');
         });
     }
 
-    if (btnRafaela) {
-        btnRafaela.addEventListener('click', async () => {
+    if (btn_idadeRafaela) {
+        btn_idadeRafaela.addEventListener('click', async () => {
             await clicarBotaoIdade('Rafaela Lopes Silva', 'idade-rafaela');
         });
     }
 
-    if (btnBruninho){
-        btnBruninho.addEventListener('click', async () => {
+    if (btn_idadeBruninho){
+        btn_idadeBruninho.addEventListener('click', async () => {
             await clicarBotaoIdade('Bruno Bruninho Mossa de Rezende', 'idade-bruninho');
         });
     }
 
-    if (btnAdriana) {
-        btnAdriana.addEventListener('click', async () => {
+    if (btn_idadeAdriana) {
+        btn_idadeAdriana.addEventListener('click', async () => {
             await clicarBotaoIdade('Adriana dos Santos Arajo', 'idade-adriana');
+        });
+    }
+});
+
+// Mapeamento de medalhas
+const medalhasMap = {
+    'Gold\r': 'Ouro',
+    'Silver\r': 'Prata',
+    'Bronze\r': 'Bronze'
+};
+
+// Função para retornar as medalhas que um atleta ganhou por ano
+function medalhasPorAno(atletaData) {
+    return atletaData.reduce((acc, row) => {
+        const ano = row[9];
+        const medalha = medalhasMap[row[14]] || 'Nenhuma medalha';
+        return {
+            ...acc,
+            [ano]: acc[ano] ? [...acc[ano], medalha] : [medalha]
+        };
+    }, {});
+}
+
+async function clicarBotaoMedalhas(nomeAtleta, resultDivId) {
+    const csvArray = await fetchCSV_ConverteArray(csvUrl);
+    if (csvArray) {
+        const filtrandoAtleta = filtraAtleta_Nome(csvArray, nomeAtleta);
+        const medalhasAtleta = medalhasPorAno(filtrandoAtleta);
+        const resultadoDiv = document.getElementById(resultDivId);
+        const textoResultado = Object.keys(medalhasAtleta).reduce((acc, ano) => {
+            return acc + `No ano de ${ano}, o(a) atleta ganhou: ${medalhasAtleta[ano].join(', ')}. `;
+        }, '');
+        resultadoDiv.innerText = textoResultado;
+    } else {
+        console.log('Não foi possível obter a matriz do arquivo CSV.');
+    }
+}
+
+// Resposta de cada botão
+document.addEventListener("DOMContentLoaded", () => {
+    const btn_tipoMNeymar = document.getElementById('botao_tipoMNeymar');
+    const btn_tipoMRafaela = document.getElementById('botao_tipoMRafaela');
+    const btn_tipoMBruninho = document.getElementById('botao_tipoMBruninho');
+    const btn_tipoMAdriana = document.getElementById('botao_tipoMAdriana');
+
+    if (btn_tipoMNeymar) {
+        btn_tipoMNeymar.addEventListener('click', async () => {
+            await clicarBotaoMedalhas('Neymar da Silva Santos Jnior', 'tipoM-neymar');
+        });
+    }
+    if (btn_tipoMRafaela) {
+        btn_tipoMRafaela.addEventListener('click', async () => {
+            await clicarBotaoMedalhas('Rafaela Lopes Silva', 'tipoM-rafaela');
+        });
+    }
+    if (btn_tipoMBruninho){
+        btn_tipoMBruninho.addEventListener('click', async () => {
+            await clicarBotaoMedalhas('Bruno Bruninho Mossa de Rezende', 'tipoM-bruninho');
+        });
+    }
+    if (btn_tipoMAdriana) {
+        btn_tipoMAdriana.addEventListener('click', async () => {
+            await clicarBotaoMedalhas('Adriana dos Santos Arajo', 'tipoM-adriana');
         });
     }
 });
