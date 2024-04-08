@@ -108,21 +108,9 @@ header{
     justify-content: center;
     padding: 20px;
     font-weight: bold;
+    position:relative;
+    top: 12px;
     color: #FFCA2F;
-}
-
-.pergunta select {
-    width: 92%;
-    padding: 10px;
-    border: none;
-    border-radius: 30px;
-    margin: 0%;
-    font-size: 20px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-    color:#01492e;
-    background-color: #FFCA2F;
 }
 
 button{
@@ -152,27 +140,16 @@ button:hover{
     padding: 10px;
 }
 
-.pergunta select:hover{
-    background-color: #01492e;
-    color: #FFCA2F;
-    transition: all .4s ease-out;
-}
-
-.pergunta select:focus {
-    outline: none; /* Remove a borda de foco padrão */
-    border: 1px solid #FFCA2F; /* Adiciona uma nova borda de foco */
-}
-
 @media (max-width: 600px) {
   .pergunta label {
     font-size: 30px;
   }
-  .pergunta select, .butao button {
+  .butao button {
     width: 100%;
   }
 }
 
-.mais-curiosidades{
+.nome-atleta{
     font-size: 30px;
     position: relative;
     bottom: 15px;
@@ -180,12 +157,28 @@ button:hover{
     color: #FFCA2F;
 }
 
-.mais-curiosidades:hover{
+.nome-atleta:hover{
     color: #01492e;
     transition: all .4s ease-out;
 }
 
-#curiosidades{
+.proxPergunta {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-left: 40%;
+    bottom: 90px;
+}
+
+.proxPergunta button {
+    font-size: 15px; /* Defina o tamanho da fonte desejado */
+    padding: 10px 20px; /* Defina o preenchimento interno do botão */
+    width: 50%; /* Tornar o botão do mesmo tamanho que o card */
+    font-weight: bold;
+}
+
+#cidades-rafaela{
     padding: 10px;
     margin-top: 20px;
     border-radius: 5px;

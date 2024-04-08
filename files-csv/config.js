@@ -329,3 +329,56 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Botão 'Perguntar' não encontrado.");
     }
 });
+
+// Função para retornar as cidades em que um atleta específico participou das Olimpíadas
+function cidadesParticipacao(atletaData) {
+    const cidades = {
+        'London': 'Londres',
+        'Beijing': 'Pequim',
+    };
+    // Mapeia os dados do atleta para um array de cidades de participação
+    const cidadesParticipacao = atletaData.map(row => cidades[row[11]] || row[11]);
+    const cidadesUnicas = [...new Set(cidadesParticipacao)];
+    return cidadesUnicas;
+}
+
+async function clicarBotaoCidades(nomeAtleta, resultDivId) {
+    const csvArray = await fetchCSV_ConverteArray(csvUrl);
+    if (csvArray) {
+        const filtrandoAtleta = filtraAtleta_Nome(csvArray, nomeAtleta);
+        const cidadesParticipacaoAtleta = cidadesParticipacao(filtrandoAtleta).join(', ');
+        const resultadoDiv = document.getElementById(resultDivId);
+        resultadoDiv.innerText = `O(a) atleta participou das Olimpíadas nas cidades: ${cidadesParticipacaoAtleta}.`;
+    } else {
+        console.log('Não foi possível obter a matriz do arquivo CSV.');
+    }
+}
+
+// Resposta de cada botão
+document.addEventListener("DOMContentLoaded", () => {
+    const btn_cidadesNeymar = document.getElementById('botao_cidadesNeymar');
+    const btn_cidadesRafaela = document.getElementById('botao_cidadesRafaela');
+    const btn_cidadesBruninho = document.getElementById('botao_cidadesBruninho');
+    const btn_cidadesAdriana = document.getElementById('botao_cidadesAdriana');
+
+    if (btn_cidadesNeymar) {
+        btn_cidadesNeymar.addEventListener('click', async () => {
+            await clicarBotaoCidades('Neymar da Silva Santos Jnior', 'cidades-neymar');
+        });
+    }
+    if (btn_cidadesRafaela) {
+        btn_cidadesRafaela.addEventListener('click', async () => {
+            await clicarBotaoCidades('Rafaela Lopes Silva', 'cidades-rafaela');
+        });
+    }
+    if (btn_cidadesBruninho){
+        btn_cidadesBruninho.addEventListener('click', async () => {
+            await clicarBotaoCidades('Bruno Bruninho Mossa de Rezende', 'cidades-bruninho');
+        });
+    }
+    if (btn_cidadesAdriana) {
+        btn_cidadesAdriana.addEventListener('click', async () => {
+            await clicarBotaoCidades('Adriana dos Santos Arajo', 'cidades-adriana');
+        });
+    }
+});

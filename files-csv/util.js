@@ -18,6 +18,11 @@ function redirecionarAtleta4(nomeAtleta) {
     window.location.href = nomeAtleta + ".html";
 }
 
+//Redirecionamento para a quinta pergunta
+function redirecionarAtleta5(nomeAtleta) {
+    window.location.href = nomeAtleta + ".html";
+}
+
 //função que faz com que o select entenda a opção escolhida pelo usuário
 function atletaSelecionado() {
     const select = document.getElementById('iest');
