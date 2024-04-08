@@ -19,7 +19,7 @@ function atletaSelecionado() {
             window.location.href = 'files-csv\\bruninho.html';
             break;
         case 'atl-adriana':
-            window.location.href = 'files-csv\\driana.html';
+            window.location.href = 'files-csv\\adriana.html';
             break;
         default:
             alert('Por favor, escolha um atleta.');

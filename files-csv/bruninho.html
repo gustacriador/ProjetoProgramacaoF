@@ -20,21 +20,20 @@
     </header>
     <div class="container">
         <div class="card">
-          <!---  <div class="pergunta">
-            <!<label for="iest">Quantas medalhas tem o(a) atleta</label>
-            <select name="nome-atleta" id="iest">
-                <option value="" selected>Escolha o nome</option>
-                <option value="atl-neymar">Neymar - Futebol</option>
-                <option value="atl-rafaela">Rafaela Silva - Judô</option>
-                <option value="atl-bruninho">Bruninho - Volei</option>
-                <option value="atl-adriana">Adriana Araújo - Boxe?</option>
-            </select>
-            <div class="butao">
-                <button id="meuBotao" onclick="mostrarMedalhas()">Perguntar</button>
-            </div>
-            </div>-->
+            <div class="pergunta">
+                <div class="nome-atleta"><h1>Bruninho</h1></div>
+                <label for="iest">Quantas medalhas Olímpicas ele possui?</label>
+                <div class="butao">
+                    <button id="botaoBruninho">Perguntar</button>
+                </div>
+                <!-- Vamos precisar preencher essa div depois -->
+                <div id="medalhas-bruninho"></div>
+                </div>
         </div>
     </div>
-    <script src="files-csv\util.js"></script>
+    <div class="proxPergunta">
+        <button id="botao2-bruninho">Próxima Pergunta</button>
+    </div>
+    <script src="config.js"></script>
 </body>
 </html>

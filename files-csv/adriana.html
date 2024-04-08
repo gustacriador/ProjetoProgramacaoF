@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Olimpiano Curioso - Neymar</title>
+    <title>Olimpiano Curioso - Adriana Araújo</title>
     <link href="/style/adriana.css" rel ="stylesheet"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -20,21 +20,20 @@
     </header>
     <div class="container">
         <div class="card">
-          <!---  <div class="pergunta">
-            <!<label for="iest">Quantas medalhas tem o(a) atleta</label>
-            <select name="nome-atleta" id="iest">
-                <option value="" selected>Escolha o nome</option>
-                <option value="atl-neymar">Neymar - Futebol</option>
-                <option value="atl-rafaela">Rafaela Silva - Judô</option>
-                <option value="atl-bruninho">Bruninho - Volei</option>
-                <option value="atl-adriana">Adriana Araújo - Boxe?</option>
-            </select>
-            <div class="butao">
-                <button id="meuBotao" onclick="mostrarMedalhas()">Perguntar</button>
-            </div>
-            </div>-->
+            <div class="pergunta">
+                <div class="nome-atleta"><h1>Adriana Araújo</h1></div>
+                <label for="iest">Quantas medalhas Olímpicas ela possui?</label>
+                <div class="butao">
+                    <button id="botaoAdriana">Perguntar</button>
+                </div>
+                <!-- Vamos precisar preencher essa div depois -->
+                <div id="medalhas-adriana"></div>
+                </div>
         </div>
     </div>
-    <script src="files-csv\util.js"></script>
+    <div class="proxPergunta">
+        <button id="botao2-adriana">Próxima Pergunta</button>
+    </div>
+    <script src="config.js"></script>
 </body>
 </html>
