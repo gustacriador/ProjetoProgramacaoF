@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Olimpiano Curioso - +Curiosidades</title>
+    <link href="\style\geral.css" rel ="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+    <header>
+        <div class="cabecalho">
+            <div class="logo"><img src="/assets/logo.png"/></div>
+            <div class="nome-site">
+                <h1>Olimpiano Curioso</h1>
+                </div>
+                <div class="menu">
+                    <a href="/index.html">Home</a>
+                </div>
+            </div>
+    </header>
+    <div class="container">
+        <div class="card">
+            <div class="pergunta">
+                <div class="mais-curiosidades"><h1>+ Curiosidades</h1></div>
+            <label for="iest">Quantos atletas o Brasil enviou para as Olimpíadas de...</label>
+            <select name="geral-atl" id="iest">
+                <option value="" selected>Escolha o ano</option>
+                <option value="ano-2008">2008?</option>
+                <option value="ano-2012">2012?</option>
+                <option value="ano-2016">2016?</option>
+            </select>
+            <div class="butao">
+                <button id="perguntar-geral">Perguntar</button>
+            </div>
+            <div id="curiosidades"></div>
+            </div>
+        </div>
+    </div>
+    <script src="config.js"></script>
+    <script src="util.js"></script>
+</body>
+</html>

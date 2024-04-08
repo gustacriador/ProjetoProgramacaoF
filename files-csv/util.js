@@ -36,7 +36,10 @@ function atletaSelecionado() {
         case 'atl-adriana':
             window.location.href = 'files-csv\\adriana.html';
             break;
+        case 'atl-geral':
+            window.location.href = 'files-csv\\geral.html';
+            break;
         default:
-            alert('Por favor, escolha um atleta.');
+            alert('Por favor, escolha uma opção.');
     }
 }

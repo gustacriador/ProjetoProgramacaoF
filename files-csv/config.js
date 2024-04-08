@@ -279,3 +279,53 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// Função para extrair o ano do valor selecionado
+function extraiAno(valor) {
+    return valor.replace('ano-', '');
+}
+
+// Função para contar o número de atletas que o Brasil enviou para as Olimpíadas em um ano específico
+function contaAtletasBrasil_Ano(csvArray, ano) {
+    // Filtra o array de dados para encontrar os atletas do Brasil que participaram das Olimpíadas no ano especificado
+    const atletasBrasil_Ano = csvArray.filter(row => {
+        const nomePais = row[6];
+        const anoOlimpiadas = row[9];
+        return nomePais === 'Brazil' && anoOlimpiadas === ano;
+    });
+    
+    // Retorna o número de atletas
+    return atletasBrasil_Ano.length;
+}
+
+// Função para lidar com a ação de clique do botão "Perguntar"
+async function clicarBotaoPerguntar() {
+    const selectElement = document.getElementById('iest');
+    const valorSelecionado = selectElement.options[selectElement.selectedIndex].value;
+    const anoSelecionado = extraiAno(valorSelecionado);
+
+    // Verifica se um ano foi selecionado
+    if (valorSelecionado === '') {
+        alert('Por favor, escolha um ano.');
+        return;
+    }
+
+    const csvArray = await fetchCSV_ConverteArray(csvUrl);
+    if (csvArray) {
+        const numAtletas = contaAtletasBrasil_Ano(csvArray, anoSelecionado);
+        const resultadoDiv = document.getElementById('curiosidades');
+        resultadoDiv.innerText = `O Brasil enviou ${numAtletas} atleta(s) para as Olimpíadas de ${anoSelecionado}.`;
+    } else {
+        console.log('Não foi possível obter a matriz do arquivo CSV.');
+    }
+}
+
+// Adiciona o evento de clique ao botão "Perguntar"
+document.addEventListener("DOMContentLoaded", () => {
+    const btnPerguntar = document.getElementById('perguntar-geral');
+    if (btnPerguntar) {
+        btnPerguntar.addEventListener('click', clicarBotaoPerguntar);
+    } else {
+        console.error("Botão 'Perguntar' não encontrado.");
+    }
+});

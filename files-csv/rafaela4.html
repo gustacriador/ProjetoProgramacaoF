@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Olimpiano Curioso - Rafaela</title>
+    <link href="/style/rafaela4.css" rel ="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+    <header>
+        <div class="cabecalho">
+            <div class="logo"><img src="/assets/logo.png"/></div>
+            <div class="nome-site">
+                <h1>Olimpiano Curioso</h1>
+                </div>
+                <div class="menu">
+                    <a href="/index.html">Home</a>
+                </div>
+            </div>
+    </header>
+    <div class="container">
+        <div class="card">
+            <div class="pergunta">
+                <div class="nome-atleta"><h1>Rafaela Silva</h1></div>
+                <label for="iest">Quais medalhas ela possui?</label>
+                <div class="butao">
+                    <button id="botao_tipoMRafaela">Perguntar</button>
+                </div>
+                <!-- Vamos precisar preencher essa div depois -->
+                <div id="tipoM-rafaela"></div>
+                </div>
+        </div>
+    </div>
+    <div class="proxPergunta">
+        <button id="botao5-rafaela" onclick="redirecionarAtleta5('rafaela5')">Próxima Pergunta</button>
+    </div>
+    <script src="config.js"></script>
+    <script src="util.js"></script>
+</body>
+</html>
