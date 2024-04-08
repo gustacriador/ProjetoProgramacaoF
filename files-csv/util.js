@@ -3,6 +3,7 @@ function redirecionar(){
     window.location.href = "tela1.html"
 };
 
+//Redirecionamento para a segunda página
 function redirecionar_neymar2(){
     window.location.href = "neymar2.html"
 };
@@ -17,6 +18,23 @@ function redirecionar_bruninho2(){
 
 function redirecionar_adriana2(){
     window.location.href = "adriana2.html"
+};
+
+//Redirecionamento para a terceira pergunta
+function redirecionar_neymar3(){
+    window.location.href = "neymar3.html"
+};
+
+function redirecionar_rafaela3(){
+    window.location.href = "rafaela3.html"
+};
+
+function redirecionar_bruninho3(){
+    window.location.href = "bruninho3.html"
+};
+
+function redirecionar_adriana3(){
+    window.location.href = "adriana3.html"
 };
 
 //função que faz com que o select entenda a opção escolhida pelo usuário

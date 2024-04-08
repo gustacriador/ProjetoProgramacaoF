@@ -29,6 +29,11 @@ async function fetchCSV_ConverteArray(url) {
     }
 }
 
+// Função para obter o caminho da página atual
+const arquivoUrl = window.location.href;
+const csvFileName = 'athlete_events.csv';
+const csvUrl = arquivoUrl.substring(0, arquivoUrl.lastIndexOf('/')) + '/' + csvFileName;
+
 // Função para normalizar o nome removendo acentos, espaços extras e transformando em minúsculas
 const normalizaNome = (name) => name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
 
@@ -54,11 +59,6 @@ function contaMedalhas(atletaData) {
     // Retorna o número de medalhas
     return linhaMedalhas.length;
 }
-
-// Função para obter o caminho da página atual
-const arquivoUrl = window.location.href;
-const csvFileName = 'athlete_events.csv';
-const csvUrl = arquivoUrl.substring(0, arquivoUrl.lastIndexOf('/')) + '/' + csvFileName;
 
 // Função para lidar com a ação de clique do botão para um atleta específico
 async function clicarBotao(nomeAtleta, resultDivId) {
@@ -161,6 +161,58 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btn_anoAdriana) {
         btn_anoAdriana.addEventListener('click', async () => {
             await clicarBotaoAnos('Adriana dos Santos Arajo', 'ano-adriana');
+        });
+    }
+});
+
+// Função para retornar a idade do atleta quando ele participou das Olimpíadas
+function idadeParticipacao(atletaData) {
+    // Mapeia os dados do atleta para um array de idades de participação
+    const filtraIdades = atletaData.map(row => row[3]);
+    const idades = [...new Set(filtraIdades)];
+    return idades;
+}
+
+async function clicarBotaoIdade(nomeAtleta, resultDivId) {
+    const csvArray = await fetchCSV_ConverteArray(csvUrl);
+    if (csvArray) {
+        const filtrandoAtleta = filtraAtleta_Nome(csvArray, nomeAtleta);
+        const idadesParticipacaoAtleta = idadeParticipacao(filtrandoAtleta).join(', ');
+        const resultadoDiv = document.getElementById(resultDivId);
+        resultadoDiv.innerText = `O(a) atleta participou das Olimpíadas nas idades: ${idadesParticipacaoAtleta}.`;
+    } else {
+        console.log('Não foi possível obter a matriz do arquivo CSV.');
+    }
+}
+
+// Resposta de cada botão
+document.addEventListener("DOMContentLoaded", () => {
+    const btnNeymar = document.getElementById('botao_idadeNeymar');
+    const btnRafaela = document.getElementById('botao_idadeRafaela');
+    const btnBruninho = document.getElementById('botao_idadeBruninho');
+    const btnAdriana = document.getElementById('botao_idadeAdriana');
+
+    if (btnNeymar) {
+        btnNeymar.addEventListener('click', async () => {
+            await clicarBotaoIdade('Neymar da Silva Santos Jnior', 'idade-neymar');
+        });
+    }
+
+    if (btnRafaela) {
+        btnRafaela.addEventListener('click', async () => {
+            await clicarBotaoIdade('Rafaela Lopes Silva', 'idade-rafaela');
+        });
+    }
+
+    if (btnBruninho){
+        btnBruninho.addEventListener('click', async () => {
+            await clicarBotaoIdade('Bruno Bruninho Mossa de Rezende', 'idade-bruninho');
+        });
+    }
+
+    if (btnAdriana) {
+        btnAdriana.addEventListener('click', async () => {
+            await clicarBotaoIdade('Adriana dos Santos Arajo', 'idade-adriana');
         });
     }
 });
