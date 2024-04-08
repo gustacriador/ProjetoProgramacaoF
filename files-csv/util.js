@@ -1,6 +1,22 @@
-//função que ativa o botão do index para a tela 1
+//Funções de redirecionamento de página
 function redirecionar(){
     window.location.href = "tela1.html"
+};
+
+function redirecionar_neymar2(){
+    window.location.href = "neymar2.html"
+};
+
+function redirecionar_rafaela2(){
+    window.location.href = "rafaela2.html"
+};
+
+function redirecionar_bruninho2(){
+    window.location.href = "bruninho2.html"
+};
+
+function redirecionar_adriana2(){
+    window.location.href = "adriana2.html"
 };
 
 //função que faz com que o select entenda a opção escolhida pelo usuário

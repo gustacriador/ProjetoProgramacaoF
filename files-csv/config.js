@@ -70,7 +70,7 @@ async function clicarBotao(nomeAtleta, resultDivId) {
         const medalsCount = contaMedalhas(filtrandoAtleta);
         console.log(medalsCount);
         const resultadoDiv = document.getElementById(resultDivId);
-        resultadoDiv.innerText = `O atleta possui ${medalsCount} medalha(s).`;
+        resultadoDiv.innerText = `O(a) atleta possui ${medalsCount} medalha(s).`;
     } else {
         console.log('Não foi possível obter a matriz do arquivo CSV.');
     }
@@ -111,5 +111,56 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         console.error("Botão de Adriana não encontrado.");
+    }
+});
+
+// Função para retornar os anos que um atleta específico participou das Olimpíadas
+function anosParticipacao(atletaData) {
+    const anos = atletaData.map(row => row[9]);
+    const anosUnicos = [...new Set(anos)];
+    return anosUnicos;
+}
+
+async function clicarBotaoAnos(nomeAtleta, resultDivId) {
+    const csvArray = await fetchCSV_ConverteArray(csvUrl);
+    if (csvArray) {
+        const filtrandoAtleta = filtraAtleta_Nome(csvArray, nomeAtleta);
+        const anosParticipacaoAtleta = anosParticipacao(filtrandoAtleta).join(' e ');
+        const resultadoDiv = document.getElementById(resultDivId);
+        resultadoDiv.innerText = `O(a) atleta participou das Olimpíadas nos anos: ${anosParticipacaoAtleta}.`;
+    } else {
+        console.log('Não foi possível obter a matriz do arquivo CSV.');
+    }
+}
+
+// Resposta de cada botão
+document.addEventListener("DOMContentLoaded", () => {
+    const btn_anoNeymar = document.getElementById('botao_anoNeymar');
+    const btn_anoRafaela = document.getElementById('botao_anoRafaela');
+    const btn_anoBruninho = document.getElementById('botao_anoBruninho');
+    const btn_anoAdriana = document.getElementById('botao_anoAdriana');
+
+    if (btn_anoNeymar) {
+        btn_anoNeymar.addEventListener('click', async () => {
+            await clicarBotaoAnos('Neymar da Silva Santos Jnior', 'ano-neymar');
+        });
+    }
+
+    if (btn_anoRafaela) {
+        btn_anoRafaela.addEventListener('click', async () => {
+            await clicarBotaoAnos('Rafaela Lopes Silva', 'ano-rafaela');
+        });
+    }
+
+    if (btn_anoBruninho){
+        btn_anoBruninho.addEventListener('click', async () => {
+            await clicarBotaoAnos('Bruno Bruninho Mossa de Rezende', 'ano-bruninho');
+        });
+    }
+
+    if (btn_anoAdriana) {
+        btn_anoAdriana.addEventListener('click', async () => {
+            await clicarBotaoAnos('Adriana dos Santos Arajo', 'ano-adriana');
+        });
     }
 });

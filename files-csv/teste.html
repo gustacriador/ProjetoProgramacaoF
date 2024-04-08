@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste CSV</title>
+</head>
+<body>
+    <button id="btnTeste">Verificar Atleta</button>
+    <div id="resultado"></div>
+
+    <script>
+        // Nome do arquivo CSV
+        const csvFileName = 'athlete_events.csv';
+
+        // Função para fazer o fetch do arquivo CSV e transformá-lo em uma matriz
+        async function fetchCSVAndConvertToArray(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Erro ao obter o arquivo CSV');
+                }
+                const csvText = await response.text();
+                const rows = csvText.trim().split('\n');
+                const csvArray = rows.map(row => row.replace(/"/g, '').split(','));
+                return csvArray;
+            } catch (error) {
+                console.error('Erro:', error);
+                return null;
+            }
+        }
+
+        // Função para filtrar um atleta pelo ID
+        function filterAthleteById(csvArray, id) {
+            return csvArray.filter(row => row[0] === id);
+        }
+
+        // Teste para um ID específico
+        async function handleIdSearch(id) {
+            const csvArray = await fetchCSVAndConvertToArray(csvFileName);
+            if (csvArray) {
+                const filteredAthlete = filterAthleteById(csvArray, id);
+                console.log('Dados do atleta:', filteredAthlete);
+                document.getElementById('resultado').innerText = JSON.stringify(filteredAthlete, null, 2);
+            } else {
+                console.log('Não foi possível obter a matriz do arquivo CSV.');
+            }
+        }
+
+        // Chame a função com o ID do atleta que você deseja pesquisar
+        document.getElementById('btnTeste').addEventListener('click', function() {
+            handleIdSearch('15791');
+        });
+    </script>
+</body>
+</html>
