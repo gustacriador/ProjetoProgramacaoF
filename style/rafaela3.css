@@ -186,3 +186,13 @@ button:hover{
     font-size: 25px;
     color: #FFCA2F;
 }
+.perfil img {
+    width: 150px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+    position: absolute; /* Permite posicionar a imagem absolutamente */
+    left: calc(50% - 75px); /* Centraliza horizontalmente a imagem */
+    border-radius: 50%; /* Adiciona um pouco de borda arredondada */
+    box-shadow: 0px 0px 10px rgba(247, 235, 18, 0.3); /* Adiciona uma sombra suave */
+    bottom: 500px;
+    z-index: 999; /* Define um valor alto para garantir que a imagem esteja acima de outros elementos */
+}

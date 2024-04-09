@@ -171,3 +171,26 @@ button:hover{
     width: 100%;
   }
 }
+
+.imagem1, .imagem2, .imagem3, .imagem4 {
+    position: absolute;
+    max-width: 600px; /* Define a largura máxima para as imagens */
+    height: auto; /* Mantém a proporção da imagem */
+    z-index: 2; /* Define uma camada de empilhamento acima do card */
+}
+
+.imagem1 img, .imagem4 img {
+    max-width: 100%; /* Define a largura máxima para as imagens */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove o espaço extra abaixo das imagens */
+}
+
+.imagem1 {
+    top: 15%;
+    left: -4%;
+}
+
+.imagem4 {
+    bottom: 5%;
+    right: 2%;
+}
